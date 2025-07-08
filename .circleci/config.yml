@@ -1,0 +1,27 @@
+jobs:
+  test:
+    docker:
+      - image: cypress/included:13.0.0  # Có sẵn Node, Chrome, Cypress
+    steps:
+      - checkout
+
+      - run:
+          name: Install dependencies
+          command: npm ci
+
+      - run:
+          name: Run Cypress tests on external website
+          command: npx cypress run --config baseUrl=https://app.qa-eclipse.ecapital.com
+
+      - store_artifacts:
+          path: cypress/videos
+          destination: videos
+
+      - store_artifacts:
+          path: cypress/screenshots
+          destination: screenshots
+
+workflows:
+  run-tests:
+    jobs:
+      - test
