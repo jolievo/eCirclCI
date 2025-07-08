@@ -8,6 +8,9 @@ jobs:
       - checkout
 
       - run:
+          command: npm install
+
+      - run:
           name: Install dependencies
           command: npm ci
 
