@@ -1,7 +1,7 @@
 jobs:
   test:
-    docker:
-      - image: cypress/included:13.0.0  # Có sẵn Node, Chrome, Cypress
+    machine:
+      image: ubuntu-2204:current
     steps:
       - checkout
 
